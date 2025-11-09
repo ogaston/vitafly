@@ -60,7 +60,7 @@ export default function ActiveEmergencies() {
 
   const getStatusColor = (status: string) => {
     if (status === "En ruta") return "bg-blue-500/10 text-blue-400 border-blue-500/30"
-    if (status === "Atendido") return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    if (status === "Atendido") return "bg-purple-500/10 text-purple-400 border-purple-500/30"
     return "bg-gray-500/10 text-gray-400 border-gray-500/30"
   }
 
@@ -71,11 +71,11 @@ export default function ActiveEmergencies() {
         {emergencies.map((emergency) => (
           <div
             key={emergency.id}
-            className="border border-border rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
+            className="border border-border rounded-lg p-4 hover:border-purple-500/50 transition-colors"
           >
             <div className="flex items-start justify-between mb-3">
               <div className="flex gap-3 flex-1">
-                <span className="font-mono font-bold text-emerald-400">{emergency.id}</span>
+                <span className="font-mono font-bold text-purple-400">{emergency.id}</span>
                 <Badge className={`${getTypeColor(emergency.type)} border`}>{emergency.type}</Badge>
                 <Badge className={`${getStatusColor(emergency.status)} border`}>{emergency.status}</Badge>
               </div>
@@ -88,7 +88,7 @@ export default function ActiveEmergencies() {
               </div>
               <div>
                 <p className="text-muted-foreground text-xs">Dron Asignado</p>
-                <p className="font-mono font-semibold text-emerald-400">{emergency.drone}</p>
+                <p className="font-mono font-semibold text-purple-400">{emergency.drone}</p>
               </div>
               <div className="col-span-2">
                 <p className="text-muted-foreground text-xs">Ubicación</p>

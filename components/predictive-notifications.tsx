@@ -476,8 +476,8 @@ export default function PredictiveNotifications() {
                         </div>
                         {notification.assignedDoctorName && (
                           <div className="flex items-center gap-2 mt-2">
-                            <Stethoscope className="w-3 h-3 text-emerald-400" />
-                            <span className="text-xs text-emerald-400 font-medium">
+                            <Stethoscope className="w-3 h-3 text-purple-400" />
+                            <span className="text-xs text-purple-400 font-medium">
                               Asignado a: {notification.assignedDoctorName}
                             </span>
                           </div>
@@ -510,7 +510,7 @@ export default function PredictiveNotifications() {
                       <p className="text-xs font-semibold text-muted-foreground">Métricas Relevantes:</p>
                       <div className="flex flex-wrap gap-3 text-xs">
                         {notification.metrics.heartRate && (
-                          <span className="px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded">
+                          <span className="px-2 py-1 bg-purple-500/10 text-purple-400 rounded">
                             HR: {notification.metrics.heartRate} bpm
                           </span>
                         )}
@@ -590,8 +590,8 @@ export default function PredictiveNotifications() {
                                 key={doctor.id}
                                 className={`p-3 cursor-pointer transition-colors ${
                                   notification.assignedDoctorId === doctor.id
-                                    ? "border-emerald-500 bg-emerald-500/10"
-                                    : "hover:border-emerald-500/50"
+                                    ? "border-purple-500 bg-purple-500/10"
+                                    : "hover:border-purple-500/50"
                                 }`}
                                 onClick={() => assignDoctor(notification.id, doctor.id)}
                               >
@@ -601,7 +601,7 @@ export default function PredictiveNotifications() {
                                     <p className="text-xs text-muted-foreground">{doctor.specialty}</p>
                                   </div>
                                   {notification.assignedDoctorId === doctor.id && (
-                                    <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                                    <CheckCircle2 className="w-5 h-5 text-purple-400" />
                                   )}
                                 </div>
                               </Card>
@@ -643,7 +643,7 @@ export default function PredictiveNotifications() {
                           {availableDoctors.map(doctor => (
                             <Card
                               key={doctor.id}
-                              className="p-3 cursor-pointer transition-colors hover:border-emerald-500/50"
+                              className="p-3 cursor-pointer transition-colors hover:border-purple-500/50"
                               onClick={() => assignDoctor(notification.id, doctor.id)}
                             >
                               <div className="flex items-center justify-between">
@@ -659,7 +659,7 @@ export default function PredictiveNotifications() {
                                     </span>
                                   </div>
                                 </div>
-                                <Stethoscope className="w-5 h-5 text-emerald-400" />
+                                <Stethoscope className="w-5 h-5 text-purple-400" />
                               </div>
                             </Card>
                           ))}

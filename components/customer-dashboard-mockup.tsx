@@ -137,11 +137,11 @@ export default function CustomerDashboardMockup() {
         {/* Customer Dashboard Content Inside Mockup */}
         <div className="absolute inset-[50px_18px_50px_18px] bg-background rounded-[2.5rem] overflow-hidden shadow-2xl">
           {/* Dashboard Content */}
-          <div className="h-full flex flex-col bg-gradient-to-b from-emerald-50 to-background dark:from-emerald-950/20 dark:to-background">
+          <div className="h-full flex flex-col bg-gradient-to-b from-purple-50 to-background dark:from-purple-950/20 dark:to-background">
             {/* Drug Selection Screen */}
             {currentStep === "drug-selection" && (
               <div className="h-full flex flex-col">
-                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-emerald-500 to-emerald-600 text-white">
+                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-purple-500 to-purple-600 text-white">
                   <div className="flex items-center gap-3 mb-4">
                     <button
                       onClick={handleBackToDashboard}
@@ -151,7 +151,7 @@ export default function CustomerDashboardMockup() {
                     </button>
                     <div>
                       <h1 className="text-2xl font-bold">Solicitar Medicamento</h1>
-                      <p className="text-emerald-100 text-sm">Selecciona el medicamento</p>
+                      <p className="text-purple-100 text-sm">Selecciona el medicamento</p>
                     </div>
                   </div>
                 </div>
@@ -160,18 +160,18 @@ export default function CustomerDashboardMockup() {
                     {drugs.map((drug) => (
                       <Card
                         key={drug.id}
-                        className="p-4 bg-card border-border hover:border-emerald-500/50 transition-colors cursor-pointer"
+                        className="p-4 bg-card border-border hover:border-purple-500/50 transition-colors cursor-pointer"
                         onClick={() => handleDrugSelect(drug.id)}
                       >
                         <div className="flex items-start justify-between">
                           <div className="flex items-start gap-3 flex-1">
-                            <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0">
-                              <Pill className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                            <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center shrink-0">
+                              <Pill className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                             </div>
                             <div className="flex-1">
                               <h3 className="font-semibold text-sm mb-1">{drug.name}</h3>
                               <p className="text-xs text-muted-foreground mb-2">{drug.description}</p>
-                              <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400">{drug.price}</p>
+                              <p className="text-sm font-bold text-purple-600 dark:text-purple-400">{drug.price}</p>
                             </div>
                           </div>
                         </div>
@@ -185,7 +185,7 @@ export default function CustomerDashboardMockup() {
             {/* Doctor Selection Screen */}
             {currentStep === "doctor-selection" && (
               <div className="h-full flex flex-col">
-                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-emerald-500 to-emerald-600 text-white">
+                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-purple-500 to-purple-600 text-white">
                   <div className="flex items-center gap-3 mb-4">
                     <button
                       onClick={handleBackToDashboard}
@@ -195,7 +195,7 @@ export default function CustomerDashboardMockup() {
                     </button>
                     <div>
                       <h1 className="text-2xl font-bold">Agendar Cita</h1>
-                      <p className="text-emerald-100 text-sm">Selecciona un médico</p>
+                      <p className="text-purple-100 text-sm">Selecciona un médico</p>
                     </div>
                   </div>
                 </div>
@@ -204,12 +204,12 @@ export default function CustomerDashboardMockup() {
                     {doctors.map((doctor) => (
                       <Card
                         key={doctor.id}
-                        className="p-4 bg-card border-border hover:border-emerald-500/50 transition-colors cursor-pointer"
+                        className="p-4 bg-card border-border hover:border-purple-500/50 transition-colors cursor-pointer"
                         onClick={() => handleDoctorSelect(doctor.id)}
                       >
                         <div className="flex items-start gap-3">
-                          <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0">
-                            <Stethoscope className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                          <div className="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center shrink-0">
+                            <Stethoscope className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                           </div>
                           <div className="flex-1">
                             <h3 className="font-semibold text-sm mb-1">{doctor.name}</h3>
@@ -236,7 +236,7 @@ export default function CustomerDashboardMockup() {
             {/* Date Selection Screen */}
             {currentStep === "date-selection" && selectedDoctor && (
               <div className="h-full flex flex-col">
-                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-emerald-500 to-emerald-600 text-white">
+                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-purple-500 to-purple-600 text-white">
                   <div className="flex items-center gap-3 mb-4">
                     <button
                       onClick={handleBackToDoctorSelection}
@@ -246,7 +246,7 @@ export default function CustomerDashboardMockup() {
                     </button>
                     <div>
                       <h1 className="text-2xl font-bold">Seleccionar Fecha</h1>
-                      <p className="text-emerald-100 text-sm">
+                      <p className="text-purple-100 text-sm">
                         {doctors.find(d => d.id === selectedDoctor)?.name}
                       </p>
                     </div>
@@ -256,8 +256,8 @@ export default function CustomerDashboardMockup() {
                   {/* Selected Doctor Info */}
                   <Card className="p-4 bg-card border-border mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0">
-                        <Stethoscope className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                      <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center shrink-0">
+                        <Stethoscope className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                       </div>
                       <div className="flex-1">
                         <p className="text-xs text-muted-foreground">Médico seleccionado</p>
@@ -284,9 +284,9 @@ export default function CustomerDashboardMockup() {
 
                   {/* Selected Date Display */}
                   {selectedDate && (
-                    <Card className="p-4 bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800 mb-4">
+                    <Card className="p-4 bg-purple-50 dark:bg-purple-950/30 border-purple-200 dark:border-purple-800 mb-4">
                       <div className="flex items-center gap-2">
-                        <CalendarIcon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                        <CalendarIcon className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                         <div>
                           <p className="text-xs text-muted-foreground">Fecha seleccionada</p>
                           <p className="text-sm font-semibold">
@@ -306,7 +306,7 @@ export default function CustomerDashboardMockup() {
                   <Button
                     onClick={handleContinueToDetails}
                     disabled={!selectedDate}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white disabled:opacity-50"
+                    className="w-full bg-purple-600 hover:bg-purple-700 text-white disabled:opacity-50"
                   >
                     Continuar
                   </Button>
@@ -317,7 +317,7 @@ export default function CustomerDashboardMockup() {
             {/* Appointment Details Screen */}
             {currentStep === "appointment-details" && selectedDoctor && selectedDate && (
               <div className="h-full flex flex-col">
-                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-emerald-500 to-emerald-600 text-white">
+                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-purple-500 to-purple-600 text-white">
                   <div className="flex items-center gap-3 mb-4">
                     <button
                       onClick={handleBackToDateSelection}
@@ -327,7 +327,7 @@ export default function CustomerDashboardMockup() {
                     </button>
                     <div>
                       <h1 className="text-2xl font-bold">Detalles de la Cita</h1>
-                      <p className="text-emerald-100 text-sm">Describe tu consulta</p>
+                      <p className="text-purple-100 text-sm">Describe tu consulta</p>
                     </div>
                   </div>
                 </div>
@@ -336,8 +336,8 @@ export default function CustomerDashboardMockup() {
                   <Card className="p-4 bg-card border-border mb-4">
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0">
-                          <Stethoscope className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                        <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center shrink-0">
+                          <Stethoscope className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                         </div>
                         <div className="flex-1">
                           <p className="text-xs text-muted-foreground">Médico</p>
@@ -369,7 +369,7 @@ export default function CustomerDashboardMockup() {
                   <Card className="p-4 bg-card border-border mb-4">
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
-                        <FileText className="w-4 h-4 text-emerald-600" />
+                        <FileText className="w-4 h-4 text-purple-600" />
                         <label className="text-sm font-semibold">
                           ¿Qué te está pasando?
                         </label>
@@ -389,7 +389,7 @@ export default function CustomerDashboardMockup() {
                   {/* Submit Button */}
                   <Button
                     onClick={handleAppointmentSubmit}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+                    className="w-full bg-purple-600 hover:bg-purple-700 text-white"
                   >
                     Confirmar Cita
                   </Button>
@@ -400,7 +400,7 @@ export default function CustomerDashboardMockup() {
             {/* Estimated Arrival Screen */}
             {currentStep === "estimated-arrival" && selectedDrug && (
               <div className="h-full flex flex-col">
-                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-emerald-500 to-emerald-600 text-white">
+                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-purple-500 to-purple-600 text-white">
                   <div className="flex items-center gap-3 mb-4">
                     <button
                       onClick={handleBackToSelection}
@@ -410,7 +410,7 @@ export default function CustomerDashboardMockup() {
                     </button>
                     <div>
                       <h1 className="text-2xl font-bold">Confirmación</h1>
-                      <p className="text-emerald-100 text-sm">Detalles de entrega</p>
+                      <p className="text-purple-100 text-sm">Detalles de entrega</p>
                     </div>
                   </div>
                 </div>
@@ -418,7 +418,7 @@ export default function CustomerDashboardMockup() {
                   {/* Selected Drug */}
                   <Card className="p-4 bg-card border-border mb-4">
                     <div className="flex items-center gap-3 mb-3">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                      <CheckCircle2 className="w-5 h-5 text-purple-600" />
                       <div>
                         <p className="text-xs text-muted-foreground">Medicamento seleccionado</p>
                         <p className="font-semibold text-sm">
@@ -429,15 +429,15 @@ export default function CustomerDashboardMockup() {
                   </Card>
 
                   {/* Estimated Time */}
-                  <Card className="p-6 bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-emerald-950/30 dark:to-blue-950/30 border-emerald-200 dark:border-emerald-800 mb-4">
+                  <Card className="p-6 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border-purple-200 dark:border-purple-800 mb-4">
                     <div className="flex items-center justify-center mb-4">
-                      <div className="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center">
                         <Clock className="w-8 h-8 text-white" />
                       </div>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-muted-foreground mb-1">Tiempo estimado de llegada</p>
-                      <p className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">
+                      <p className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
                         {drugStore.estimatedTime}
                       </p>
                       <p className="text-xs text-muted-foreground">Tu pedido está en camino</p>
@@ -490,7 +490,7 @@ export default function CustomerDashboardMockup() {
                   <div className="mt-6">
                     <Button
                       onClick={handleDrugRequestConfirm}
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+                      className="w-full bg-purple-600 hover:bg-purple-700 text-white"
                     >
                       Confirmar Pedido
                     </Button>
@@ -505,8 +505,8 @@ export default function CustomerDashboardMockup() {
                 <div className="flex-1 flex items-center justify-center px-6">
                   <div className="text-center w-full">
                     <div className="flex justify-center mb-6">
-                      <div className="w-24 h-24 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
-                        <CheckCircle2 className="w-16 h-16 text-emerald-600 dark:text-emerald-400" />
+                      <div className="w-24 h-24 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                        <CheckCircle2 className="w-16 h-16 text-purple-600 dark:text-purple-400" />
                       </div>
                     </div>
                     <h1 className="text-2xl font-bold mb-2">¡Pedido Confirmado!</h1>
@@ -529,7 +529,7 @@ export default function CustomerDashboardMockup() {
                     </Card>
                     <Button
                       onClick={handleSuccessComplete}
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+                      className="w-full bg-purple-600 hover:bg-purple-700 text-white"
                     >
                       Volver al inicio
                     </Button>
@@ -544,8 +544,8 @@ export default function CustomerDashboardMockup() {
                 <div className="flex-1 flex items-center justify-center px-6">
                   <div className="text-center w-full">
                     <div className="flex justify-center mb-6">
-                      <div className="w-24 h-24 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
-                        <CheckCircle2 className="w-16 h-16 text-emerald-600 dark:text-emerald-400" />
+                      <div className="w-24 h-24 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                        <CheckCircle2 className="w-16 h-16 text-purple-600 dark:text-purple-400" />
                       </div>
                     </div>
                     <h1 className="text-2xl font-bold mb-2">¡Cita Confirmada!</h1>
@@ -555,7 +555,7 @@ export default function CustomerDashboardMockup() {
                     <Card className="p-4 bg-card border-border mb-6">
                       <div className="space-y-3 text-sm">
                         <div className="flex items-center gap-3">
-                          <Stethoscope className="w-5 h-5 text-emerald-600 shrink-0" />
+                          <Stethoscope className="w-5 h-5 text-purple-600 shrink-0" />
                           <div className="flex-1 text-left">
                             <p className="text-muted-foreground text-xs">Médico</p>
                             <p className="font-semibold">
@@ -584,7 +584,7 @@ export default function CustomerDashboardMockup() {
                     </p>
                     <Button
                       onClick={handleSuccessComplete}
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+                      className="w-full bg-purple-600 hover:bg-purple-700 text-white"
                     >
                       Volver al inicio
                     </Button>
@@ -597,11 +597,11 @@ export default function CustomerDashboardMockup() {
             {currentStep === "dashboard" && (
               <>
                 {/* Header */}
-                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-emerald-500 to-emerald-600 text-white">
+                <div className="px-6 pt-12 pb-4 bg-gradient-to-b from-purple-500 to-purple-600 text-white">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h1 className="text-2xl font-bold">Hola, María</h1>
-                  <p className="text-emerald-100 text-sm">Bienvenida de vuelta</p>
+                  <p className="text-purple-100 text-sm">Bienvenida de vuelta</p>
                 </div>
                 <div className="relative">
                   <Bell className="w-6 h-6" />
@@ -615,8 +615,8 @@ export default function CustomerDashboardMockup() {
               <div className="grid grid-cols-2 gap-3">
                 <Card className="p-4 bg-card border-border">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
-                      <Heart className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                    <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Salud</p>
@@ -644,43 +644,43 @@ export default function CustomerDashboardMockup() {
               
               <div className="space-y-3">
                 <Card 
-                  className="p-4 bg-card border-border hover:border-emerald-500/50 transition-colors cursor-pointer"
+                  className="p-4 bg-card border-border hover:border-purple-500/50 transition-colors cursor-pointer"
                   onClick={() => setCurrentStep("drug-selection")}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <Pill className="w-4 h-4 text-emerald-600" />
+                        <Pill className="w-4 h-4 text-purple-600" />
                         <h3 className="font-semibold text-sm">Solicitar Medicamento</h3>
                       </div>
                       <p className="text-xs text-muted-foreground mb-2">
                         Entrega rápida a domicilio
                       </p>
-                      <Badge variant="outline" className="bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800">
+                      <Badge variant="outline" className="bg-purple-50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800">
                         Disponible
                       </Badge>
                     </div>
                   </div>
                 </Card>
 
-                <Card className="p-4 bg-card border-border hover:border-emerald-500/50 transition-colors">
+                <Card className="p-4 bg-card border-border hover:border-purple-500/50 transition-colors">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <MapPin className="w-4 h-4 text-emerald-600" />
+                        <MapPin className="w-4 h-4 text-purple-600" />
                         <h3 className="font-semibold text-sm">Monitoreo de Emergencias</h3>
                       </div>
                       <p className="text-xs text-muted-foreground mb-2">
                         Servicio activo las 24 horas
                       </p>
-                      <Badge variant="outline" className="bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800">
+                      <Badge variant="outline" className="bg-purple-50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800">
                         Activo
                       </Badge>
                     </div>
                   </div>
                 </Card>
 
-                <Card className="p-4 bg-card border-border hover:border-emerald-500/50 transition-colors">
+                <Card className="p-4 bg-card border-border hover:border-purple-500/50 transition-colors">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
@@ -703,7 +703,7 @@ export default function CustomerDashboardMockup() {
                 <h2 className="text-lg font-semibold mb-3 px-2">Actividad Reciente</h2>
                 <div className="space-y-2">
                   <div className="flex items-center gap-3 p-3 bg-card rounded-lg border border-border">
-                    <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    <div className="w-2 h-2 rounded-full bg-purple-500"></div>
                     <div className="flex-1">
                       <p className="text-sm font-medium">Servicio completado</p>
                       <p className="text-xs text-muted-foreground">Hace 2 horas</p>
@@ -723,7 +723,7 @@ export default function CustomerDashboardMockup() {
                 {/* Bottom Navigation */}
                 <div className="px-4 pb-6 pt-2 border-t border-border bg-card">
                   <div className="flex items-center justify-around">
-                    <button className="flex flex-col items-center gap-1 p-2 text-emerald-600 dark:text-emerald-400">
+                    <button className="flex flex-col items-center gap-1 p-2 text-purple-600 dark:text-purple-400">
                       <Home className="w-5 h-5" />
                       <span className="text-xs font-medium">Inicio</span>
                     </button>

@@ -196,7 +196,7 @@ export default function DroneLiveMap() {
   }, [])
 
   const getStatusColor = (status: string) => {
-    if (status === "En misión") return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    if (status === "En misión") return "bg-purple-500/10 text-purple-400 border-purple-500/30"
     if (status === "En espera") return "bg-blue-500/10 text-blue-400 border-blue-500/30"
     return "bg-yellow-500/10 text-yellow-400 border-yellow-500/30"
   }
@@ -335,7 +335,7 @@ export default function DroneLiveMap() {
                     >
                       <Popup>
                         <div className="text-sm space-y-1">
-                          <p className="font-bold text-emerald-400">{drone.id}</p>
+                          <p className="font-bold text-purple-400">{drone.id}</p>
                           <p className="text-xs">
                             <span className="font-semibold">Estado:</span> {drone.status}
                           </p>
@@ -383,7 +383,7 @@ export default function DroneLiveMap() {
               <div className="space-y-3">
                 <div>
                   <p className="text-xs text-muted-foreground">ID Dron</p>
-                  <p className="text-lg font-mono font-bold text-emerald-400">{selectedDrone.id}</p>
+                  <p className="text-lg font-mono font-bold text-purple-400">{selectedDrone.id}</p>
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Estado</p>
@@ -394,7 +394,7 @@ export default function DroneLiveMap() {
                   <div className="flex items-center gap-2 mt-1">
                     <div className="flex-1 bg-background rounded h-2">
                       <div
-                        className={`h-full rounded ${selectedDrone.battery > 70 ? "bg-emerald-500" : selectedDrone.battery > 40 ? "bg-yellow-500" : "bg-red-500"}`}
+                        className={`h-full rounded ${selectedDrone.battery > 70 ? "bg-purple-500" : selectedDrone.battery > 40 ? "bg-yellow-500" : "bg-red-500"}`}
                         style={{ width: `${selectedDrone.battery}%` }}
                       ></div>
                     </div>
@@ -413,7 +413,7 @@ export default function DroneLiveMap() {
                 {emergencies.find((e) => e.droneId === selectedDrone.id) && (
                   <div className="border-t border-border pt-4 mt-4">
                     <div className="flex items-start gap-2 mb-3 p-2 bg-background rounded">
-                      <AlertCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                      <AlertCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="text-xs text-muted-foreground">Emergencia Activa</p>
                         <p className="text-sm font-semibold">
@@ -465,10 +465,10 @@ export default function DroneLiveMap() {
                 <div
                   key={drone.id}
                   onClick={() => setSelectedDrone(drone)}
-                  className={`p-3 rounded-lg border cursor-pointer transition-all ${selectedDrone?.id === drone.id ? "border-emerald-500/50 bg-background" : "border-border hover:border-emerald-500/30"}`}
+                  className={`p-3 rounded-lg border cursor-pointer transition-all ${selectedDrone?.id === drone.id ? "border-purple-500/50 bg-background" : "border-border hover:border-purple-500/30"}`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono font-bold text-emerald-400">{drone.id}</span>
+                    <span className="font-mono font-bold text-purple-400">{drone.id}</span>
                     <Badge className={`${getStatusColor(drone.status)} border text-xs`}>{drone.status}</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
@@ -476,7 +476,7 @@ export default function DroneLiveMap() {
                     <span
                       className={
                         drone.battery > 70
-                          ? "text-emerald-400"
+                          ? "text-purple-400"
                           : drone.battery > 40
                             ? "text-yellow-400"
                             : "text-red-400"

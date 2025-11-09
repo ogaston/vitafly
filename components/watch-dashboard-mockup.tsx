@@ -50,8 +50,8 @@ export default function WatchDashboardMockup() {
       label: "Distancia", 
       value: "5.2", 
       unit: "km",
-      color: "text-emerald-500",
-      bgColor: "bg-emerald-100 dark:bg-emerald-900/30"
+      color: "text-purple-500",
+      bgColor: "bg-purple-100 dark:bg-purple-900/30"
     },
     { 
       icon: Clock, 
@@ -151,12 +151,12 @@ export default function WatchDashboardMockup() {
               <div className="pt-3 border-t border-slate-700/50">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-emerald-400" />
+                    <TrendingUp className="w-4 h-4 text-purple-400" />
                     <span className="text-white/70 text-xs">Objetivo: 10k pasos</span>
                   </div>
                   <div className="w-16 h-1.5 bg-slate-700 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-emerald-500 rounded-full"
+                      className="h-full bg-purple-500 rounded-full"
                       style={{ width: "82%" }}
                     />
                   </div>
@@ -197,8 +197,8 @@ export default function WatchDashboardMockup() {
           {/* Help Success Screen */}
           {currentStep === "help-success" && (
             <div className="flex-1 flex flex-col items-center justify-center gap-4">
-              <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mb-2">
-                <CheckCircle2 className="w-12 h-12 text-emerald-500" />
+              <div className="w-20 h-20 rounded-full bg-purple-500/20 flex items-center justify-center mb-2">
+                <CheckCircle2 className="w-12 h-12 text-purple-500" />
               </div>
               <h2 className="text-white text-xl font-bold text-center">¡Ayuda Enviada!</h2>
               <p className="text-white/70 text-sm text-center px-4">
@@ -208,7 +208,7 @@ export default function WatchDashboardMockup() {
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-between">
                     <span className="text-white/60">Estado:</span>
-                    <span className="text-emerald-400 font-semibold">En camino</span>
+                    <span className="text-purple-400 font-semibold">En camino</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-white/60">Tiempo estimado:</span>
@@ -218,7 +218,7 @@ export default function WatchDashboardMockup() {
               </Card>
               <Button
                 onClick={() => setCurrentStep("stats")}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white mt-4 h-12 rounded-xl"
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white mt-4 h-12 rounded-xl"
               >
                 Volver
               </Button>

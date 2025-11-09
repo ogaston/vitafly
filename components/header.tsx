@@ -24,37 +24,37 @@ export default function Header() {
             <Link 
               href="/patients" 
               className={cn(
-                "px-4 py-2 text-sm font-medium text-foreground hover:text-emerald-600 rounded-md transition-colors relative",
-                pathname === "/patients" && "text-emerald-600"
+                "px-4 py-2 text-sm font-medium text-foreground hover:text-purple-600 rounded-md transition-colors relative",
+                pathname === "/patients" && "text-purple-600"
               )}
             >
               Monitoreo de Pacientes
               {pathname === "/patients" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600 rounded-full" />
               )}
             </Link>
             <Link 
               href="/notifications" 
               className={cn(
-                "px-4 py-2 text-sm font-medium text-foreground hover:text-emerald-600 rounded-md transition-colors relative",
-                pathname === "/notifications" && "text-emerald-600"
+                "px-4 py-2 text-sm font-medium text-foreground hover:text-purple-600 rounded-md transition-colors relative",
+                pathname === "/notifications" && "text-purple-600"
               )}
             >
               Notificaciones Predictivas
               {pathname === "/notifications" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600 rounded-full" />
               )}
             </Link>
             <Link 
               href="/live-map" 
               className={cn(
-                "px-4 py-2 text-sm font-medium text-foreground hover:text-emerald-600 rounded-md transition-colors relative",
-                pathname === "/live-map" && "text-emerald-600"
+                "px-4 py-2 text-sm font-medium text-foreground hover:text-purple-600 rounded-md transition-colors relative",
+                pathname === "/live-map" && "text-purple-600"
               )}
             >
               Ver Mapa en Vivo
               {pathname === "/live-map" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600 rounded-full" />
               )}
             </Link>
           </nav>

@@ -12,14 +12,16 @@
   --card-foreground: oklch(0.15 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0 0);
-  --primary: oklch(0.42 0.17 142.48);
-  --primary-foreground: oklch(0.95 0 0);
+
+  /* Purple primary color */
+  --primary: #6366F1;
+  --primary-foreground: #FFFFFF;
   --secondary: oklch(0.35 0.15 133.12);
   --secondary-foreground: oklch(0.95 0 0);
   --muted: oklch(0.88 0 0);
   --muted-foreground: oklch(0.5 0 0);
-  --accent: oklch(0.42 0.17 142.48);
-  --accent-foreground: oklch(0.95 0 0);
+  --accent: #E5E7EB;
+  --accent-foreground: #1F2937;
   --destructive: oklch(0.62 0.25 27.33);
   --destructive-foreground: oklch(0.95 0 0);
   --border: oklch(0.92 0 0);

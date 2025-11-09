@@ -135,19 +135,19 @@ export default function PatientList() {
   const getStatusColor = (status: string) => {
     if (status === "critical") return "bg-red-500/10 text-red-400 border-red-500/30"
     if (status === "warning") return "bg-yellow-500/10 text-yellow-400 border-yellow-500/30"
-    return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    return "bg-purple-500/10 text-purple-400 border-purple-500/30"
   }
 
   const getStatusBgColor = (status: string) => {
     if (status === "critical") return "border-l-4 border-l-red-500 bg-red-500/5"
     if (status === "warning") return "border-l-4 border-l-yellow-500 bg-yellow-500/5"
-    return "border-l-4 border-l-emerald-500 bg-emerald-500/5"
+    return "border-l-4 border-l-purple-500 bg-purple-500/5"
   }
 
   const TrendIndicator = ({ trend }: { trend: "up" | "down" | "stable" }) => {
     if (trend === "up") return <TrendingUp className="w-3 h-3 text-red-400" />
     if (trend === "down") return <TrendingDown className="w-3 h-3 text-blue-400" />
-    return <div className="w-3 h-3 bg-emerald-400 rounded-full" />
+    return <div className="w-3 h-3 bg-purple-400 rounded-full" />
   }
 
   const handleEmergencyAlert = (patient: PatientData) => {
@@ -167,7 +167,7 @@ export default function PatientList() {
             return (
               <Card
                 key={patient.id}
-                className={`p-3 cursor-pointer transition-all border ${selectedPatient?.id === patient.id ? "border-emerald-500/50 bg-background" : "border-border hover:border-emerald-500/30"} ${getStatusBgColor(status)}`}
+                className={`p-3 cursor-pointer transition-all border ${selectedPatient?.id === patient.id ? "border-purple-500/50 bg-background" : "border-border hover:border-purple-500/30"} ${getStatusBgColor(status)}`}
                 onClick={() => setSelectedPatient(patient)}
               >
                 <div className="flex items-start justify-between mb-2">
@@ -183,7 +183,7 @@ export default function PatientList() {
                       <p className="text-muted-foreground">HR</p>
                       <TrendIndicator trend={patient.heartRateTrend} />
                     </div>
-                    <p className="font-mono font-bold text-emerald-400 transition-all duration-300">
+                    <p className="font-mono font-bold text-purple-400 transition-all duration-300">
                       {Math.round(patient.heartRate)}
                     </p>
                   </div>
@@ -220,7 +220,7 @@ export default function PatientList() {
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <span>Age: {selectedPatient.age}</span>
                   <span>•</span>
-                  <span className="font-mono text-emerald-400">{selectedPatient.wearableId}</span>
+                  <span className="font-mono text-purple-400">{selectedPatient.wearableId}</span>
                   <span>•</span>
                   <span>{selectedPatient.condition}</span>
                 </div>
@@ -256,7 +256,7 @@ export default function PatientList() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <Card className="bg-card border-border p-4 text-center">
               <p className="text-muted-foreground text-sm mb-2">Heart Rate</p>
-              <p className="text-3xl font-bold text-emerald-400 transition-all duration-300">
+              <p className="text-3xl font-bold text-purple-400 transition-all duration-300">
                 {Math.round(selectedPatient.heartRate)}
               </p>
               <p className="text-xs text-muted-foreground mt-1">bpm</p>

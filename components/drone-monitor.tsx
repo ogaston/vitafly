@@ -14,13 +14,13 @@ export default function DroneMonitor() {
   ]
 
   const getStatusColor = (status: string) => {
-    if (status === "En misión") return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    if (status === "En misión") return "bg-purple-500/10 text-purple-400 border-purple-500/30"
     if (status === "En espera") return "bg-blue-500/10 text-blue-400 border-blue-500/30"
     return "bg-yellow-500/10 text-yellow-400 border-yellow-500/30"
   }
 
   const getBatteryColor = (battery: number) => {
-    if (battery > 80) return "text-emerald-400"
+    if (battery > 80) return "text-purple-400"
     if (battery > 50) return "text-yellow-400"
     return "text-red-400"
   }

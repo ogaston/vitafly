@@ -42,7 +42,7 @@ export default function EmergencyForm() {
             required
             value={formData.patientName}
             onChange={(e) => setFormData({ ...formData, patientName: e.target.value })}
-            className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Nombre completo"
           />
         </div>
@@ -54,7 +54,7 @@ export default function EmergencyForm() {
               type="number"
               value={formData.age}
               onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-              className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               placeholder="Edad"
             />
           </div>
@@ -63,7 +63,7 @@ export default function EmergencyForm() {
             <select
               value={formData.emergencyType}
               onChange={(e) => setFormData({ ...formData, emergencyType: e.target.value })}
-              className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <option>Cardíaca</option>
               <option>Trauma</option>
@@ -79,7 +79,7 @@ export default function EmergencyForm() {
             type="text"
             value={formData.location}
             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-            className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Dirección o coordenadas"
           />
         </div>
@@ -89,7 +89,7 @@ export default function EmergencyForm() {
           <textarea
             value={formData.symptoms}
             onChange={(e) => setFormData({ ...formData, symptoms: e.target.value })}
-            className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+            className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
             rows={3}
             placeholder="Descripción de síntomas"
           />
@@ -101,7 +101,7 @@ export default function EmergencyForm() {
             <select
               value={formData.priority}
               onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-              className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <option>Crítica</option>
               <option>Alta</option>
@@ -115,7 +115,7 @@ export default function EmergencyForm() {
               type="tel"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               placeholder="Número de contacto"
             />
           </div>
@@ -123,7 +123,7 @@ export default function EmergencyForm() {
 
         <Button
           type="submit"
-          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg transition-colors"
+          className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-colors"
         >
           Registrar Emergencia
         </Button>

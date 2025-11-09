@@ -80,15 +80,15 @@ export default function PatientHealthGraphs({ patientId }: PatientGraphProps) {
         <div className="mt-4 grid grid-cols-3 gap-2 text-sm">
           <div className="text-center">
             <p className="text-muted-foreground">Min</p>
-            <p className="font-bold text-emerald-400 transition-all">{Math.round(hrStats.min)}</p>
+            <p className="font-bold text-purple-400 transition-all">{Math.round(hrStats.min)}</p>
           </div>
           <div className="text-center">
             <p className="text-muted-foreground">Avg</p>
-            <p className="font-bold text-emerald-400 transition-all">{hrStats.avg}</p>
+            <p className="font-bold text-purple-400 transition-all">{hrStats.avg}</p>
           </div>
           <div className="text-center">
             <p className="text-muted-foreground">Max</p>
-            <p className="font-bold text-emerald-400 transition-all">{Math.round(hrStats.max)}</p>
+            <p className="font-bold text-purple-400 transition-all">{Math.round(hrStats.max)}</p>
           </div>
         </div>
       </Card>

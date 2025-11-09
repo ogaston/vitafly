@@ -34,7 +34,7 @@ export default function ConnectedServices() {
             <div className="grid grid-cols-3 gap-2 text-sm mb-3">
               <div className="bg-background rounded p-2">
                 <p className="text-muted-foreground text-xs">En Atención</p>
-                <p className="text-lg font-bold text-emerald-400">{service.patients}</p>
+                <p className="text-lg font-bold text-purple-400">{service.patients}</p>
               </div>
               <div className="bg-background rounded p-2">
                 <p className="text-muted-foreground text-xs">Hoy</p>
