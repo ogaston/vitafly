@@ -3,6 +3,8 @@ import DroneLiveMap from "@/components/drone-live-map"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+export const dynamic = 'force-dynamic'
+
 export default function LiveMapPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">

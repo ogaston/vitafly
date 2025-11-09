@@ -1,24 +1,63 @@
-import Link from "next/link"
+"use client"
 
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
+import Image from "next/image"
 export default function Header() {
+  const pathname = usePathname()
+
   return (
     <header className="border-b border-border bg-card">
       <div className="px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+            <div className="w-10 h-10 rounded-lg  flex items-center justify-center">
+              <Image src="/logo.png" alt="Vitafly" width={40} height={40} />    
             </div>
-            <h1 className="text-2xl font-bold">DroneCare Nexus</h1>
+            <div className="flex flex-col">
+              <h1 className="text-2xl font-bold">Vitafly</h1>
+              <p className="text-xs text-muted-foreground">Centro de Control y Monitoreo</p>
+            </div>
           </Link>
-          <div className="flex items-center gap-4">
-            <Link href="/patients">
-              <span className="text-sm hover:text-emerald-400 transition-colors cursor-pointer">Pacientes</span>
+          <nav className="flex items-center gap-1">
+            <Link 
+              href="/patients" 
+              className={cn(
+                "px-4 py-2 text-sm font-medium text-foreground hover:text-emerald-600 rounded-md transition-colors relative",
+                pathname === "/patients" && "text-emerald-600"
+              )}
+            >
+              Monitoreo de Pacientes
+              {pathname === "/patients" && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
+              )}
             </Link>
-            <span className="text-sm text-muted-foreground">Emergency Medical Drone Operations Center</span>
-          </div>
+            <Link 
+              href="/notifications" 
+              className={cn(
+                "px-4 py-2 text-sm font-medium text-foreground hover:text-emerald-600 rounded-md transition-colors relative",
+                pathname === "/notifications" && "text-emerald-600"
+              )}
+            >
+              Notificaciones Predictivas
+              {pathname === "/notifications" && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
+              )}
+            </Link>
+            <Link 
+              href="/live-map" 
+              className={cn(
+                "px-4 py-2 text-sm font-medium text-foreground hover:text-emerald-600 rounded-md transition-colors relative",
+                pathname === "/live-map" && "text-emerald-600"
+              )}
+            >
+              Ver Mapa en Vivo
+              {pathname === "/live-map" && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
+              )}
+            </Link>
+          </nav>
         </div>
       </div>
     </header>

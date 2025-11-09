@@ -1,0 +1,32 @@
+
+services:
+
+  # Web (Main Web App)
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vitafly-web
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.vitafly-web.rule=Host(`vitafly.ogaston.com`)
+      - traefik.http.routers.vitafly-web.entrypoints=web
+      - traefik.http.services.vitafly-web.loadbalancer.server.scheme=http
+      - traefik.http.services.vitafly-web.loadbalancer.server.port=6000
+    environment:
+      NODE_ENV: production
+      PORT: 6000
+      NEXT_TELEMETRY_DISABLED: 1
+    networks:
+      - proxy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:6000/ >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  proxy:
+    external: true

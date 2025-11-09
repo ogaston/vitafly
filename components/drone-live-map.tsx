@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { AlertCircle } from "lucide-react"
 import dynamic from "next/dynamic"
-import L from "leaflet"
 
 // Dynamically import MapContainer to avoid SSR issues
 const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), { ssr: false })
@@ -17,9 +16,10 @@ const Polyline = dynamic(() => import("react-leaflet").then((mod) => mod.Polylin
 // Component to fit map bounds - must be inside MapContainer
 const MapBoundsFitter = dynamic(
   () =>
-    Promise.all([import("react-leaflet"), import("react")]).then(([leafletMod, reactMod]) => {
+    Promise.all([import("react-leaflet"), import("react"), import("leaflet")]).then(([leafletMod, reactMod, LMod]) => {
       const { useMap } = leafletMod
       const { useEffect } = reactMod
+      const L = LMod.default
       return function MapBoundsFitter({ drones }: { drones: Drone[] }) {
         const map = useMap()
         useEffect(() => {
@@ -61,29 +61,41 @@ interface Emergency {
 // Bogotá coordinates (approximately center of the city)
 const BOGOTA_CENTER: [number, number] = [4.7110, -74.0721]
 
-// Custom drone icon
-const createDroneIcon = (isActive: boolean, battery: number) => {
+// Custom drone icon using SVG file - must be created client-side
+const createDroneIcon = (L: any, isActive: boolean, battery: number, droneId: string) => {
   const color = isActive ? "#10b981" : "#3b82f6"
   const batteryColor = battery > 70 ? "#10b981" : battery > 40 ? "#eab308" : "#ef4444"
+  
+  // Modified SVG with dynamic colors
+  const svgContent = `
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));">
+      <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+      <path d="M11 11L19 19M37 37L29 29" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M37 11L29 19M11 37L19 29" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="19" y="19" width="10" height="10" fill="${color}" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M37 18C38.3845 18 39.7379 17.5895 40.889 16.8203C42.0401 16.0511 42.9373 14.9579 43.4672 13.6788C43.997 12.3997 44.1356 10.9922 43.8655 9.63437C43.5954 8.2765 42.9287 7.02922 41.9498 6.05026C40.9708 5.07129 39.7235 4.4046 38.3656 4.13451C37.0078 3.86441 35.6003 4.00303 34.3212 4.53285C33.0421 5.06266 31.9489 5.95987 31.1797 7.11101C30.4105 8.26215 30 9.61553 30 11M37 30C38.3845 30 39.7379 30.4105 40.889 31.1797C42.0401 31.9489 42.9373 33.0421 43.4672 34.3212C43.997 35.6003 44.1356 37.0078 43.8655 38.3656C43.5954 39.7235 42.9287 40.9708 41.9498 41.9497C40.9708 42.9287 39.7235 43.5954 38.3656 43.8655C37.0078 44.1356 35.6003 43.997 34.3212 43.4672C33.0421 42.9373 31.9489 42.0401 31.1797 40.889C30.4105 39.7379 30 38.3845 30 37M11 18C9.61553 18 8.26216 17.5895 7.11101 16.8203C5.95987 16.0511 5.06266 14.9579 4.53285 13.6788C4.00303 12.3997 3.86441 10.9922 4.13451 9.63437C4.4046 8.2765 5.07129 7.02922 6.05026 6.05026C7.02922 5.07129 8.2765 4.4046 9.63437 4.13451C10.9922 3.86441 12.3997 4.00303 13.6788 4.53285C14.9579 5.06266 16.0511 5.95987 16.8203 7.11101C17.5895 8.26215 18 9.61553 18 11M11 30C9.61553 30 8.26216 30.4105 7.11101 31.1797C5.95987 31.9489 5.06266 33.0421 4.53285 34.3212C4.00303 35.6003 3.86441 37.0078 4.13451 38.3656C4.4046 39.7235 5.07129 40.9708 6.05026 41.9497C7.02922 42.9287 8.2765 43.5954 9.63437 43.8655C10.9922 44.1356 12.3997 43.997 13.6788 43.4672C14.9579 42.9373 16.0511 42.0401 16.8203 40.889C17.5895 39.7379 18 38.3845 18 37" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Battery indicator -->
+      <rect x="8" y="2" width="32" height="4" fill="none" stroke="#333" stroke-width="2" rx="2"/>
+      <rect x="8" y="2" width="${(battery / 100) * 32}" height="4" fill="${batteryColor}" rx="2"/>
+    </svg>
+  `
   
   return L.divIcon({
     className: "custom-drone-icon",
     html: `
-      <div style="position: relative;">
-        <svg width="30" height="30" viewBox="0 0 30 30" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-          <polygon points="15,5 8,20 22,20" fill="${color}" stroke="white" stroke-width="1.5"/>
-          <circle cx="15" cy="15" r="4" fill="white"/>
-          <rect x="5" y="2" width="20" height="3" fill="none" stroke="#666" stroke-width="1" rx="1"/>
-          <rect x="5" y="2" width="${(battery / 100) * 20}" height="3" fill="${batteryColor}" rx="1"/>
-        </svg>
-        <div style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%); 
-                    background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; 
-                    border-radius: 4px; font-size: 10px; font-weight: bold; white-space: nowrap;">
+      <div style="position: relative; display: inline-block;">
+        ${svgContent}
+        <div style="position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); 
+                    background: rgba(0,0,0,0.8); color: white; padding: 2px 6px; 
+                    border-radius: 4px; font-size: 10px; font-weight: bold; white-space: nowrap;
+                    border: 1px solid ${color};">
+          ${droneId}
         </div>
       </div>
     `,
-    iconSize: [30, 35],
-    iconAnchor: [15, 20],
+    iconSize: [48, 48],
+    iconAnchor: [24, 24],
+    popupAnchor: [0, -24],
   })
 }
 
@@ -173,9 +185,14 @@ export default function DroneLiveMap() {
 
   const [selectedDrone, setSelectedDrone] = useState<Drone | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [leaflet, setLeaflet] = useState<any>(null)
 
   useEffect(() => {
     setMounted(true)
+    // Dynamically import Leaflet only on client side
+    import("leaflet").then((L) => {
+      setLeaflet(L.default)
+    })
   }, [])
 
   const getStatusColor = (status: string) => {
@@ -254,39 +271,56 @@ export default function DroneLiveMap() {
                   ]
                   return (
                     <div key={`route-${emergency.id}`}>
+                      {/* Outer stroke for highlighting (rendered first, behind) */}
                       <Polyline
                         positions={route}
                         pathOptions={{
-                          color: "#4ade80",
-                          weight: 3,
+                          color: "#ffffff",
+                          weight: 7,
                           opacity: 0.6,
-                          dashArray: "10, 5",
+                          dashArray: "15, 8",
+                          lineCap: "round",
+                          lineJoin: "round",
+                        }}
+                      />
+                      {/* Route line with stroke for better visibility (rendered on top) */}
+                      <Polyline
+                        positions={route}
+                        pathOptions={{
+                          color: "#10b981",
+                          weight: 5,
+                          opacity: 0.95,
+                          dashArray: "15, 8",
+                          lineCap: "round",
+                          lineJoin: "round",
                         }}
                       />
                       {/* Delivery point */}
-                      <Marker
-                        position={[emergency.deliveryLat, emergency.deliveryLng]}
-                        icon={L.divIcon({
-                          className: "custom-delivery-icon",
-                          html: `<div style="width: 16px; height: 16px; border-radius: 50%; 
-                                       border: 3px solid #3b82f6; background: rgba(59, 130, 246, 0.3);"></div>`,
-                          iconSize: [16, 16],
-                          iconAnchor: [8, 8],
-                        })}
-                      >
+                      {leaflet && (
+                        <Marker
+                          position={[emergency.deliveryLat, emergency.deliveryLng]}
+                          icon={leaflet.divIcon({
+                            className: "custom-delivery-icon",
+                            html: `<div style="width: 16px; height: 16px; border-radius: 50%; 
+                                         border: 3px solid #3b82f6; background: rgba(59, 130, 246, 0.3);"></div>`,
+                            iconSize: [16, 16],
+                            iconAnchor: [8, 8],
+                          })}
+                        >
                         <Popup>
                           <div className="text-sm">
                             <p className="font-semibold">Destino</p>
                             <p className="text-xs text-muted-foreground">{emergency.patientName}</p>
                           </div>
                         </Popup>
-                      </Marker>
+                        </Marker>
+                      )}
                     </div>
                   )
                 })}
 
                 {/* Drone markers */}
-                {drones.map((drone) => {
+                {leaflet && drones.map((drone) => {
                   const isActive = drone.status === "En misión"
                   const emergency = emergencies.find((e) => e.droneId === drone.id)
                   
@@ -294,7 +328,7 @@ export default function DroneLiveMap() {
                     <Marker
                       key={drone.id}
                       position={[drone.latitude, drone.longitude]}
-                      icon={createDroneIcon(isActive, drone.battery)}
+                      icon={createDroneIcon(leaflet, isActive, drone.battery, drone.id)}
                       eventHandlers={{
                         click: () => setSelectedDrone(drone),
                       }}
